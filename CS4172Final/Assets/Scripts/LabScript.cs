@@ -21,6 +21,13 @@ public class LabScript : MonoBehaviour {
 			//Update images 
 			walkthroughScript.setStep(walkthroughScript.step1B);
         }
+
+		if (other.tag.Contains ("spatula")) 
+		{
+			Debug.Log ("Spatula entered");
+
+			walkthroughScript.setStep (walkthroughScript.step3B);
+		}
     }
 
 

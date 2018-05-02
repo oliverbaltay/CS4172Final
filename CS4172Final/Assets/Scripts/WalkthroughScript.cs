@@ -15,6 +15,7 @@ public class WalkthroughScript : MonoBehaviour {
 
 	public string step3 = "step3";
 	public string step3B = "step3B";
+	public bool spatulaRetrieved;
 
 	public string step4 = "step4";
 	public string step4B = "step4B";
@@ -24,6 +25,8 @@ public class WalkthroughScript : MonoBehaviour {
 
 	private string[] step1Items = new string[] {"HeatButton","CoolButton","Beaker","Pan"};
 	private string[] step2Items = new string[] {"HeatButton","CoolButton","Beaker","Pan","SaltShaker","PaintBucket"};
+
+	private string[] step3BItems = new string[] {"HeatButton","CoolButton","Beaker","Pan","SaltShaker","PaintBucket"};
 
 	GameObject InfoQuad;
 	GameObject ItemQuad;
@@ -40,6 +43,7 @@ public class WalkthroughScript : MonoBehaviour {
 		clearWorkspace (step1);
 		mordantRetrieved = false;
 		mordantPoured = false;
+		spatulaRetrieved = false;
 		Mordant = GameObject.Find ("Mordant");
 	}
 	
@@ -68,6 +72,12 @@ public class WalkthroughScript : MonoBehaviour {
 			//Includes mordant in beaker 
 			curItems = step2Items;
 			Debug.Log ("updating 2");
+		}
+
+		if (curStep == step3B) {
+
+			curItems = step3BItems;
+			spatulaRetrieved = true;
 		}
 
 		foreach(string item in curItems) {
@@ -134,6 +144,7 @@ public class WalkthroughScript : MonoBehaviour {
 				//Deactivate mordant game object 
 
 				//Show 2D Congratualations screen - close on 'OK'. 
+				showStepCompleteScreen(step1);
 
 				//Initiate step 2 and show Step 2 screen. 
 				setStep(step2);
@@ -143,6 +154,11 @@ public class WalkthroughScript : MonoBehaviour {
 	}
 
 	public void showStepCompleteScreen(string curStep)
+	{
+
+	}
+
+	public void closeStepCompleteScreen()
 	{
 
 	}

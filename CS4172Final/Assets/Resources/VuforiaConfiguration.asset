@@ -45,18 +45,10 @@ MonoBehaviour:
   databaseLoad:
     dataSetsToLoad:
     - Assignment3
-    - VuforiaMars_Object_OT
-    - VuforiaMars_ModelTarget
     - Project
-    - VuforiaMars_Images
-    - VuforiaMars_VuMark
     dataSetsToActivate:
     - Assignment3
     - Project
-    - VuforiaMars_ModelTarget
-    - VuforiaMars_Object_OT
-    - VuforiaMars_Images
-    - VuforiaMars_VuMark
   videoBackground:
     clippingMode: 0
     numDivisions: 2

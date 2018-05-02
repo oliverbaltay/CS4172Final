@@ -13,6 +13,7 @@ TagManager:
   - lab_faucet
   - acidtag
   - cylinder
+  - spatula
   layers:
   - Default
   - TransparentFX

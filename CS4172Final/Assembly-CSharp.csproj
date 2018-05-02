@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\HelperScript.cs" />
      <Compile Include="Assets\Scripts\LabScript.cs" />
      <Compile Include="Assets\Scripts\PointerScript.cs" />
+     <Compile Include="Assets\Scripts\SpatulaScript.cs" />
      <Compile Include="Assets\Scripts\WalkthroughScript.cs" />
      <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
      <Compile Include="Assets\Vuforia\Scripts\DefaultTrackableEventHandler.cs" />
