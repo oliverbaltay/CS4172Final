@@ -4074,7 +4074,11 @@ MonoBehaviour:
   Bucket: {fileID: 1406520257}
   Lab: {fileID: 195795994}
   Faucet: {fileID: 2030772026}
+<<<<<<< HEAD
   Arrow: {fileID: 837516218}
+=======
+  Mordant: {fileID: 1935072216}
+>>>>>>> 91db40362cf08e210926ae24094fcacf1750094a
 --- !u!136 &837516221
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4082,7 +4086,11 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 837516218}
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_IsTrigger: 1
+=======
+  m_IsTrigger: 0
+>>>>>>> 91db40362cf08e210926ae24094fcacf1750094a
   m_Enabled: 1
   m_Radius: 1
   m_Height: 10
@@ -4098,8 +4106,13 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+<<<<<<< HEAD
   m_UseGravity: 0
   m_IsKinematic: 1
+=======
+  m_UseGravity: 1
+  m_IsKinematic: 0
+>>>>>>> 91db40362cf08e210926ae24094fcacf1750094a
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -5494,7 +5507,11 @@ MonoBehaviour:
   Bucket: {fileID: 1406520257}
   Lab: {fileID: 195795994}
   Faucet: {fileID: 2030772026}
+<<<<<<< HEAD
   Arrow: {fileID: 0}
+=======
+  Mordant: {fileID: 1935072216}
+>>>>>>> 91db40362cf08e210926ae24094fcacf1750094a
 --- !u!1 &1384829980
 GameObject:
   m_ObjectHideFlags: 0
@@ -8099,7 +8116,11 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
+<<<<<<< HEAD
   randomSeed: 197248627
+=======
+  randomSeed: -1864963950
+>>>>>>> 91db40362cf08e210926ae24094fcacf1750094a
   InitialModule:
     serializedVersion: 3
     enabled: 1
