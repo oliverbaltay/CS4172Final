@@ -8,7 +8,7 @@ public class PointerScript : MonoBehaviour {
 	private GameObject pointer;
 	public Color BeakerColor, DyeColor;
 	public Material BeakerMat;
-	public GameObject Beaker, Bucket, Lab, Faucet;
+	public GameObject Beaker, Bucket, Lab, Faucet, Arrow;
 	private bool FaucetActive=false;
 	private float BeakerContains=0.0f;
 
@@ -29,7 +29,7 @@ public class PointerScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-
+		Debug.Log ("enter");
 		if (other.tag.Contains ("lab")) {
 			GameObject prevObj = helper.getCurrentObject ();
 			GameObject curObj = other.transform.gameObject;
@@ -79,6 +79,8 @@ public class PointerScript : MonoBehaviour {
 				}
 			}
 
+
+
 			//Hot Button Selected
 			if (other.tag.Contains ("heat"))
 			{
@@ -95,6 +97,12 @@ public class PointerScript : MonoBehaviour {
 				FaucetActive = !FaucetActive;
 				Faucet.SetActive (FaucetActive);
 			}
+
+		}
+		//			Mordant Selected (WayFinding)
+		if (other.tag == "Mordant") {
+			Debug.Log ("Here_Pointer");
+			Arrow.SendMessage ("MordantCollision", SendMessageOptions.DontRequireReceiver);
 
 		}
 	}
