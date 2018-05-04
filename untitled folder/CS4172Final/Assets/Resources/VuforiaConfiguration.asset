@@ -44,10 +44,10 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
-    - Project
+    - cylinderdatabase
     - Assignment3
     dataSetsToActivate:
-    - Project
+    - cylinderdatabase
     - Assignment3
   videoBackground:
     clippingMode: 0

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VuforiaUnityInfo version="7.0">
     <TargetSet version="5.0" toolVersion="2.7.4">
+        <CylinderTarget name="cylinder2" version="3.0" targetId="83ded0c326d24740a00d214e0f4e83d2" sideLength="5.240000" topDiameter="2.060000" bottomDiameter="2.060000" sideImage="cylinder2.Body_scaled.jpg" topImage="cylinder2.Top_scaled.jpg" bottomImage="cylinder2.Bottom_scaled.jpg"/>
         <CylinderTarget name="cylinder1" version="3.0" targetId="ae3f4fe4c6684fcea810229d4fe0038f" sideLength="5.240000" topDiameter="2.060000" bottomDiameter="2.060000" sideImage="cylinder1.Body_scaled.jpg" topImage="cylinder1.Top_scaled.jpg" bottomImage="cylinder1.Bottom_scaled.jpg"/>
     </TargetSet>
 </VuforiaUnityInfo>
