@@ -10,7 +10,7 @@ public class WalkthroughScript : MonoBehaviour {
 	private static bool mordantRetrieved;
 	private static bool mordantPoured;
 	GameObject Mordant;
-
+	public GameObject InfoText, InstructionText;
 	public string step2 = "step2";
 	public string step2B = "step2B";
 	public bool hammerRetrieved;
@@ -68,13 +68,13 @@ public class WalkthroughScript : MonoBehaviour {
 
 		wayfind = GameObject.Find ("Arrow").GetComponent<Wayfind> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		onMordantRotation ();
 	}
-		
-	public void setStep(string curStep) 
+
+	public void setStep(string curStep)
 	{
 		if (curStep == step1) {
 			Debug.Log("step 1 ran");
@@ -111,16 +111,17 @@ public class WalkthroughScript : MonoBehaviour {
 	private void updateWorkspace(string curStep)
 	{
 		string[] curItems = new string[] {};
-			
+
 		if (curStep == step1B) {
 			curItems = step1Items;
 			mordantRetrieved = true;
 		}
 
 		if (curStep == step2) {
-			//Includes mordant in beaker 
+			//Includes mordant in beaker
 			curItems = step2Items;
 			Debug.Log ("updating 2");
+//			InfoText.GetComponent<Text>() = "Retreiv
 		}
 
 		if (curStep == step2B) {
@@ -148,7 +149,7 @@ public class WalkthroughScript : MonoBehaviour {
 		Material infoMaterial = (Material)Resources.Load ("InfoMaterial");
 		Material itemMaterial = (Material)Resources.Load ("ItemMaterial");
 		Material stepMaterial = (Material)Resources.Load ("StepMaterial");
-	
+
 		if (curStep == step1B) {
 //			Texture stepText1B = (Texture)Resources.Load ("Step1B.png");
 //			Texture info1B = (Texture)Resources.Load ("Info1B.png");
@@ -199,17 +200,17 @@ public class WalkthroughScript : MonoBehaviour {
 
 				Debug.Log ("Mordant poured");
 
-				//Play particle animation 
+				//Play particle animation
 				Mordant.GetComponent<ParticleSystem>().Play();
 				Mordant.GetComponent<ParticleSystem>().enableEmission = true;
 
 				//Deactivate mordant game object (don't track anymore)
 
 
-				//Show 2D Congratualations screen - close on 'OK'. 
+				//Show 2D Congratualations screen - close on 'OK'.
 				showStepCompleteScreen(step1);
 
-				//Initiate step 2 and show Step 2 screen. 
+				//Initiate step 2 and show Step 2 screen.
 				setStep(step2);
 
 			}

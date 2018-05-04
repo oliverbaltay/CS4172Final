@@ -1,58 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vuforia;
 
 public class PlaneMovement : MonoBehaviour {
 
 	public Camera ARCamera;
-	public GameObject Info, Instruction, Item;
-	private Vector3 PScale = new Vector3 (1.5f, .75f, 1f);
-	private bool IsLarge = false;
+	public GameObject Info, Instruction, Item, Wand;
+	private Vector3 PScale = new Vector3 (1, .5f, 1f);
+	public Vector3 WLoc, SLoc, InitialScale, OffsetMag;
+	private float SOffset;
+	private float Sensitivity = .5f;
+	private bool IsLarge, Scaling = false;
 	// Use this for initialization
 	void Start () {
-
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (Scaling) {
+			SOffset = SLoc.magnitude - WLoc.magnitude;
+			OffsetMag = InitialScale;
+			OffsetMag.x = OffsetMag.x - SOffset * Sensitivity;
+			OffsetMag.y = OffsetMag.y - SOffset * Sensitivity;
 
-
-		Vector3 relativePos = transform.position-ARCamera.transform.position;
-		Quaternion rotation = Quaternion.LookRotation(relativePos);
-		transform.localRotation = rotation;
-
-		//		Vector3 Rot = this.transform.eulerAngles;
-		//
-		//
-		//		if (this.tag.Contains ("Instruction")) {
-		//			Rot.y = 0f;
-		//		} else if (this.tag.Contains ("Info")) {
-		//			Rot.y = -60f;
-		//		} else {
-		//			Rot.y = 60f;
-		//		}
-		//
-		//		Rot.z = 0f;
-		//
-		//		this.transform.Rotate (Rot);
-
+			if (OffsetMag.y > 0) {
+				ScaleUp (OffsetMag);
+//				this.transform.localScale = new Vector3 (OffsetMag, OffsetMag, OffsetMag);
+			}
+		}
 	}
 
 	void OnTouchDown(){
+		SLoc = WLoc;
+		InitialScale = this.transform.localScale;
 		if (IsLarge) {
 			Debug.Log ("Scaling Down");
 			OnTouchUp ();
 
 		} else {
 			Debug.Log ("Scaling Up");
-			ScaleUp ();
+			Scaling = true;
 
 		}
 		IsLarge = !IsLarge;
-		//		this.SendMessage ("UpdateClick", SendMessageOptions.DontRequireReceiver);
 	}
 
-	void ScaleUp(){
+	void ScaleUp(Vector3 m){
 
 		if (this.tag.Contains ("Instruction")) {
 			Info.SetActive (false);
@@ -67,17 +61,21 @@ public class PlaneMovement : MonoBehaviour {
 			Instruction.SetActive (false);
 
 		} 
-
-		this.transform.localScale = PScale;
+		m.z = 1f;
+		this.transform.localScale = m;
 	}
 
+	void EndScale(){
+		Scaling = false;
+	}
 	void OnTouchUp(){
+		Scaling = false;
 		Info.SetActive (true);
 		Item.SetActive (true);
 		Instruction.SetActive (true);
 
-		Info.transform.localScale = new Vector3 (0.68f, 0.335f, 1f);
-		Item.transform.localScale = new Vector3 (0.68f, 0.335f, 1f);
-		Instruction.transform.localScale = new Vector3 (0.68f, 0.335f, 1f);
+		Info.transform.localScale = PScale;
+		Item.transform.localScale = PScale;
+		Instruction.transform.localScale = PScale;
 	}
 }

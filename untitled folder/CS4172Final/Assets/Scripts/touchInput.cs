@@ -10,7 +10,8 @@ public class touchInput : MonoBehaviour
 	private List<GameObject> touchList = new List<GameObject> ();
 	private GameObject[] touchesOld;
 	private RaycastHit hit;
-	private bool Click = true;
+	private bool Dragging = false;
+	private GameObject isDragging = null;
 	float tapCount;
 	Touch touch;
 
@@ -19,13 +20,10 @@ public class touchInput : MonoBehaviour
 
 	}
 
-	void UpdateClick(){
-		Click = true;
-	}
 	void Update ()
 	{
 		#if UNITY_EDITOR
-		if (Input.GetMouseButton (0) || Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButton (0) || Input.GetMouseButtonDown (0) || Input.GetMouseButtonUp(0) ){
 
 			touchesOld = new GameObject[touchList.Count];
 			touchList.CopyTo (touchesOld);
@@ -38,10 +36,16 @@ public class touchInput : MonoBehaviour
 				touchList.Add (recipient);
 
 				if (Input.GetMouseButtonDown (0)) {
-					Debug.Log(Click);
-					Debug.Log("Down");
 					recipient.SendMessage ("OnTouchDown", recipient, SendMessageOptions.DontRequireReceiver);
+					isDragging = recipient;
+					Dragging = true;
 				}
+
+			}
+			if(Input.GetMouseButtonUp(0) && Dragging){
+				isDragging.SendMessage("EndScale",SendMessageOptions.DontRequireReceiver);
+				isDragging = null;
+				Dragging = false;
 			}
 		}
 		#endif
