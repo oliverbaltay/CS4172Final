@@ -29,6 +29,9 @@ public class PlaneMovement : MonoBehaviour {
 //				this.transform.localScale = new Vector3 (OffsetMag, OffsetMag, OffsetMag);
 			}
 		}
+		Vector3 relativePos = transform.position-ARCamera.transform.position;
+		Quaternion rotation = Quaternion.LookRotation(relativePos);
+		transform.localRotation = rotation;
 	}
 
 	void OnTouchDown(){
@@ -63,6 +66,8 @@ public class PlaneMovement : MonoBehaviour {
 		} 
 		m.z = 1f;
 		this.transform.localScale = m;
+		this.transform.localPosition = new Vector3 (0f, 0.673f, 0.582f);
+		this.transform.localRotation = (Quaternion.identity);
 	}
 
 	void EndScale(){
@@ -73,6 +78,11 @@ public class PlaneMovement : MonoBehaviour {
 		Info.SetActive (true);
 		Item.SetActive (true);
 		Instruction.SetActive (true);
+
+		Info.transform.localRotation = new Quaternion (0, -60, 0, 1);
+		Item.transform.localRotation = new Quaternion (0, 60, 0, 1);
+		Item.transform.localPosition = new Vector3 (1.012f, 0.673f, 0.1f);
+		Info.transform.localPosition = new Vector3 (-.901f, 0.673f, 0.1f);
 
 		Info.transform.localScale = PScale;
 		Item.transform.localScale = PScale;
